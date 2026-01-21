@@ -207,14 +207,14 @@ function drawHeart(){
 
   const cx=canvas.width/2;
   const cy=heartY;
-  const s=42*p;
+  const s = 95 * p;
 
   const pts=[
     [-s,0],[-s/2,-s],[0,-s/2],[s/2,-s],
     [s,0],[s/2,s],[-s/2,s],[-s,0]
   ];
 
-  ctx.shadowBlur=18;
+  ctx.shadowBlur=28;
   ctx.shadowColor="#ffd6e7";
   ctx.strokeStyle="rgba(255,200,220,0.7)";
   ctx.lineWidth=1.2;
