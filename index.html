@@ -195,21 +195,29 @@ pass.addEventListener("keydown", function(e) {
   if (e.key === "Enter" && pass.value === "2112") {
     lock.style.display = "none";
     content.style.display = "block";
+
     music.volume = 0.5;
-    music.play().catch(()=>{});
+    music.play().catch(() => {});
   }
 });
 
-window.addEventListener("scroll", function() {
-  const rect = photo.getBoundingClientRect();
-  if (rect.top < window.innerHeight - 150 && !photo.classList.contains("show")) {
-    photo.classList.add("show");
-    music.volume = 0.9;
+window.addEventListener("scroll", function () {
+
+  // ✅ SAFE PHOTO CHECK
+  if (photo && !photo.classList.contains("show")) {
+    const rect = photo.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 150) {
+      photo.classList.add("show");
+      music.volume = 0.9;
+    }
   }
 
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 5) {
-    star.style.opacity = 1;
-    star.style.animation = "shoot 2s ease forwards";
+  // ✅ SAFE END CHECK
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
+    if (star) {
+      star.style.opacity = 1;
+      star.style.animation = "shoot 2s ease forwards";
+    }
   }
 });
 </script>
