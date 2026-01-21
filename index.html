@@ -9,13 +9,22 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: black;
+  background: transparent;
   color: white;
-  font-family: "Georgia", serif;
+  font-family: Georgia, serif;
   overflow-x: hidden;
 }
 
-/* PASSWORD SCREEN */
+/* BACKGROUND LAYER */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: -2;
+}
+
+/* PASSWORD */
 #lock {
   position: fixed;
   inset: 0;
@@ -30,32 +39,25 @@ html, body {
   text-align: center;
 }
 
-input {
+input, button {
   padding: 12px;
-  font-size: 18px;
-  border-radius: 6px;
-  border: none;
-  outline: none;
-}
-
-button {
-  margin-top: 10px;
-  padding: 10px 18px;
   font-size: 16px;
-  border: none;
   border-radius: 6px;
-  cursor: pointer;
+  border: none;
 }
 
 /* CANVAS */
 canvas {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
+  pointer-events: none;
 }
 
-/* LETTER */
+/* LETTER CARD */
 #letter {
+  position: relative;
+  z-index: 2;
   max-width: 820px;
   margin: 120px auto;
   padding: 50px;
@@ -77,28 +79,28 @@ h1 {
   margin: 80px auto;
   width: 320px;
   opacity: 0;
-  transform: scale(0.92);
+  transform: scale(0.9);
   transition: all 3s ease;
 }
 
 #photoBox.show {
   opacity: 1;
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 
 #photoBox img {
   width: 100%;
   border-radius: 20px;
-  box-shadow: 0 0 40px rgba(255,180,220,0.7);
+  box-shadow: 0 0 45px rgba(255,180,220,0.8);
   animation: pulse 3s infinite;
 }
 
 @keyframes pulse {
   0%,100% { transform: scale(1); }
-  50% { transform: scale(1.04); }
+  50% { transform: scale(1.05); }
 }
 
-/* FINAL TEXT */
+/* FINAL */
 #final {
   text-align: center;
   margin-top: 60px;
@@ -111,8 +113,7 @@ h1 {
 <div id="lock">
   <div id="lockBox">
     <h2>Ingresa la contraseña</h2>
-    <input type="password" id="pass">
-    <br>
+    <input type="password" id="pass"><br><br>
     <button onclick="unlock()">Entrar</button>
   </div>
 </div>
@@ -127,32 +128,32 @@ h1 {
 
 <h1><strong>127 días, una vida junto a ti</strong></h1>
 
-
 <p>Hermosa, quería escribirte esto para que supieras todo lo que ha significado para mi este nuestro primer mes como novios, siendo equipo y hablando desde hace ya 127 días, te puedo decir con total seguridad que han sido los mejores 127 días de mi vida, amo que hayas sido tú en cada uno de ellos, no puedo expresar toda la gratitud que te tengo, yo sé que no estás aquí para que te lo agradezca, y amo que me elijas cada día por el resto de la eternidad, aun sigo recordando lo nervioso que me sentía y lo emocionado que estaba por ir a verte, y lo mucho que quiero escuchar siempre tu voz diciéndome que soy tuyo y escuchándote hasta el fin de mis días, es esa melodía tan perfecta que no necesito escuchar nada más, nunca quiero que pares de contarme todo lo que quieras, tus días, tus pensamientos e ideas sin importar cuan descabelladas creas tu que puedan llegar a ser, yo considero que tus palabras son mágicas porque para mí, tu voz es celestial.</p>
-
+  
 <p>Yo sé que te lo he dicho en varias ocasiones, pero desde el día en que visite tu casa y estuvimos juntos, yo ya sabía que, dentro de mí, que serias tú la que estaría siempre a mi lado, la forma en que me perdía en tu mirada en esa ocasión era como si cada vez que nuestras miradas se encontraban, hacíamos clic una y otra vez.</p>
-
+  
 <p>Nuestras almas se estaban reconociendo porque definitivamente ya se conocían y yo sé que tú lo sabes al igual que yo, y ahora son una en unión, porque siempre lo han sido y al Dios enviarnos a la tierra como pequeños milagros se separaron sabiendo que su fe era volverse a unir cuando nos reencontráramos otra vez, pero ahora en la tierra.</p>
 
 <p>Yo lo sé y lo reconozco, a pesar de todo lo que pasamos y lo que lleguemos a vivir, tú y yo, siempre seremos el destino del otro, porque nuestros caminos de ahora en adelante, solo se unirán más hasta que podamos caminarlo siempre de la mano del otro, tal vez las casualidades son simplemente fe en el momento que pensamos nada pasaría y Dios ya sabía que nos reconoceríamos, por eso yo no creo que esto fuese una casualidad, fue el plan de Dios, una vez más poniéndose en marcha, y la verdad me encanta su plan, porque se y tengo fe, que está hecho para que todo lo que logremos y nos haga crecer en su nombre se juntó al otro, siempre tú y yo, siendo solo nosotros bendecidos por él.</p>
-
+  
 <p>Tu eres mi hogar, esa parte que existe en este mundo, que aun sin pertenecer a él, haces que solo por tu existir, valga completamente la pena vivirlo porque será a tu lado, en el único punto donde quiero estar, al único que siempre pertenecer.</p>
-
-<p>No tienes idea de cuanto amo que me digas que soy tuyo, que eres mía y que sé que siempre será de esa forma, realmente no necesito más, solo a ti, ese universo que me encontró y encontré y te aseguro que no hay igual, no lo puede haber, simplemente no existe, para mí solo existes tú, y siempre lo será así.</p>
-
-<p>Tal vez 127 días suenen como algo no tan grande, pero para mí, en menos de eso: conocí al amor de mi vida y mi eternidad, reencontré y me encontró otra vez en este plano mi alma gemela, te convertiste en mi pensamiento único y favorito, te volviste mi novia, mi compañera, el mejor equipo que pueda Dios dar, encontré la mejor razón para seguir mejorando y sobre todo con quien crecer y ser mejor por.</p>
-
-<p>Para nosotros este tiempo fue todo eso y se que aun tendremos mucho más para vivirlo juntos, pero para algunos animales este tiempo es menos de lo que jamás podrán vivir y aun así, lo viven, completan su propósito, aman y pueden despedirse, así es que, si ellos pueden vivir toda una vida en menos, yo te amare todas las vidas necesarias y no para de hacerlo jamás.</p>
-
+  
+<p>No tienes idea de cuanto amo que me digas que soy tuyo, que eres mía y que sé que siempre será de esa forma, realmente no necesito más, solo a ti, ese universo que me encontró y encontré y te aseguro que no hay igual, no lo puede haber, simplemente no existe, para mí solo existes tú, y siempre lo será así, tal vez 127 días suenen como algo no tan grande, pero para mí, en menos de eso:</p>
+  
+<p>Conocí al amor de mi vida y mi eternidad, reencontré y me encontró otra vez en este plano mi alma gemela, te convertiste en mi pensamiento único y favorito, te volviste mi novia, mi compañera, el mejor equipo que pueda Dios dar, encontré la mejor razón para seguir mejorando y sobre todo con quien crecer y ser mejor por.</p>
+  
+<p>Para nosotros este tiempo fue todo eso y se que aun tendremos mucho más para vivirlo juntos, pero para algunos animales este tiempo es menos de lo que jamás podrán vivir y aun así, lo viven, completan su propósito, aman y pueden despedirse, así es que, si ellos pueden vivir toda una vida en menos, yo te amare todas las vidas necesarias y no para de hacerlo jamás, porque sinceramente, solo te veo a ti en cada una de esas pequeñas vidas, que para nosotros puede que solo sean unos cuantos meses, pero para otros mas fue toda su vida y un poco más.</p>
+  
 <p>Cada pequeño momento que pase tu lado, minutos, tal vez horas, incluso días y con fe en Dios años, en cada uno te amare como si fuese mi último momento, así lo hare hasta que llegue mi último momento.</p>
-
-<p>No le tengo miedo a la intensidad, junto a ti eso no existe, yo veo un lugar donde puedo ser yo, amar como solo yo lo sé hacer, porque ese lugar es mi hogar y tu eso eres mi hogar.</p>
-
-<p>Yo lo he visto y jamás quiero dejar de hacerlo, esa niña tan perfecta que vive en ti es lo más hermoso que jamás haya visto.</p>
-
+  
+<p>No le tengo miedo a la intensidad, junto a ti eso no existe, yo veo un lugar donde puedo ser yo, amar como solo yo lo sé hacer, porque ese lugar es mi hogar y tu eso eres mi hogar, donde sea que estes, no importa que tan lejos o incluso estando a centímetros de ti, ahí será mi hogar, no donde estes si no tu existiendo y siendo amada por todo lo que eres y mereces, y yo siempre siendo tu fan No.1, tu equipo, tu apoyo,  tu animador, tu espacio seguro, donde puedas ser libre siendo completamente tu.</p>
+  
+<p>Yo lo he visto y jamás quiero dejar de hacerlo, esa niña tan perfecta que vivé en ti es lo más hermoso que jamás haya visto y que solo tu junto a mi poder apreciarla y cuidarla por el resto de mi vida.</p>
+  
 <p>Te amo mi abejita, eres inmaculada ante mis ojos y perfecta para mi alma.</p>
-</p>
-
+  
+<p>Quiero llegar al momento donde me hinque sobre una rodilla y te pida que seas mi esposa, viajar por el mundo a tu lado viendo paisajes maravillosos y acumulando momentos majestuosos a tu lado, llenando álbumes con más y más fotografías de cada aventura a tu lado, poder casarme contigo, me muero por verte entrar a la iglesia vestida de blanco, intentare no llorar cuando te vea, no prometo nada, anhelo con ansias que logremos todas esas metas que tengamos individuales y como parejas también para celebrarlas todas a tu lado, llegar a ese momento donde construyamos nuestro hogar lleno de recuerdos de cada aventura y repleto de vida y sobre todo amor, junto a Dios, muero por ser el padre de nuestros hijos, tener nuestros pequeños compañeros de vida y que crezcan rodeados de nuestro amor y unos cuantos animalitos, verlos crecer mientras nuestro amor crece, viendo como crece nuestra familia, disfrutar cada momento a tu lado es el mayor regalo que Dios nos haya podido dar en esta vida, y envejecer a tu lado me traería la mejor sensación de realización que jamás podre sentir, todo eso y más lo hare a tu lado mi cielo.</p>
+ 
 <div id="photoBox">
   <img src="photo.jpg" alt="Nosotros">
 </div>
@@ -174,105 +175,92 @@ const ctx = canvas.getContext("2d");
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
-let stars = [];
-let meteors = [];
-let showHeart = false;
-let heartPulse = 0;
+window.addEventListener("resize",()=>{
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+});
 
-for (let i = 0; i < 800; i++) {
+let stars=[], meteors=[], showHeart=false, heartPulse=0;
+
+for(let i=0;i<900;i++){
   stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 1.5,
-    a: Math.random()
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*1.8,
+    a:Math.random()
   });
 }
 
-function drawStars() {
-  stars.forEach(s => {
+function drawStars(){
+  stars.forEach(s=>{
     ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,255,${s.a})`;
+    ctx.arc(s.x,s.y,s.r+Math.random()*0.3,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,255,255,${0.6+s.a})`;
     ctx.fill();
   });
 }
 
-function drawHeartConstellation() {
-  heartPulse += 0.04;
-  const p = 1 + Math.sin(heartPulse) * 0.06;
-  const cx = canvas.width/2;
-  const cy = canvas.height/2 - 120;
-  const s = 35 * p;
+function drawHeart(){
+  heartPulse+=0.04;
+  const p=1+Math.sin(heartPulse)*0.06;
+  const cx=canvas.width/2, cy=canvas.height/2-120, s=35*p;
+  const pts=[[-s,0],[-s/2,-s],[0,-s/2],[s/2,-s],[s,0],[s/2,s],[-s/2,s]];
 
-  const pts = [
-    [-s,0],[-s/2,-s],[0,-s/2],[s/2,-s],[s,0],[s/2,s],[-s/2,s]
-  ];
-
-  ctx.strokeStyle = "rgba(255,200,220,0.5)";
+  ctx.strokeStyle="rgba(255,200,220,0.6)";
   ctx.beginPath();
-  pts.forEach((p,i)=>{
-    const x=cx+p[0],y=cy+p[1];
+  pts.forEach((pt,i)=>{
+    const x=cx+pt[0],y=cy+pt[1];
     if(i===0)ctx.moveTo(x,y); else ctx.lineTo(x,y);
     ctx.beginPath();
     ctx.arc(x,y,4*p,0,Math.PI*2);
     ctx.fillStyle="#ffd6e7";
-    ctx.shadowBlur=14;
+    ctx.shadowBlur=16;
     ctx.fill();
   });
-  ctx.closePath();
   ctx.stroke();
-
-  ctx.font = `${26*p}px serif`;
+  ctx.font=`${26*p}px serif`;
   ctx.textAlign="center";
   ctx.fillText("L  ♡  A",cx,cy+10);
 }
 
-function meteor() {
-  meteors.push({
-    x: Math.random()*canvas.width,
-    y: 0,
-    dx: 8,
-    dy: 12,
-    life: 80
-  });
+function meteor(){
+  meteors.push({x:Math.random()*canvas.width,y:0,dx:7,dy:11,l:80});
 }
 
-function drawMeteors() {
+function drawMeteors(){
   meteors.forEach(m=>{
     ctx.beginPath();
     ctx.moveTo(m.x,m.y);
     ctx.lineTo(m.x-m.dx*3,m.y-m.dy*3);
     ctx.strokeStyle="white";
     ctx.stroke();
-    m.x+=m.dx;
-    m.y+=m.dy;
-    m.life--;
+    m.x+=m.dx; m.y+=m.dy; m.l--;
   });
-  meteors=meteors.filter(m=>m.life>0);
+  meteors=meteors.filter(m=>m.l>0);
 }
 
-function animate() {
+function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   drawStars();
-  if(showHeart) drawHeartConstellation();
+  if(showHeart) drawHeart();
   drawMeteors();
   requestAnimationFrame(animate);
 }
 animate();
 
 function unlock(){
-  if(document.getElementById("pass").value==="2112"){
-    document.getElementById("lock").style.display="none";
-    document.getElementById("music").play();
+  if(pass.value==="2112"){
+    lock.style.display="none";
+    music.play();
   }
 }
 
 window.addEventListener("scroll",()=>{
-  const photo=document.getElementById("photoBox");
-  if(photo.getBoundingClientRect().top < innerHeight){
-    photo.classList.add("show");
+  const p=document.getElementById("photoBox");
+  if(p.getBoundingClientRect().top<innerHeight){
+    p.classList.add("show");
     showHeart=true;
-    for(let i=0;i<6;i++) setTimeout(meteor,i*300);
+    for(let i=0;i<8;i++) setTimeout(meteor,i*250);
   }
 });
 </script>
