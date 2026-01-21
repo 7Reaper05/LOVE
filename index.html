@@ -276,14 +276,14 @@ function unlock(){
 /* SCROLL TRIGGER */
 addEventListener("scroll",()=>{
   const photo=document.getElementById("photoBox");
-  const photo = document.getElementById("photoBox");
+  const final=document.getElementById("final");
 
   if(photo.getBoundingClientRect().top<innerHeight){
     photo.classList.add("show");
     showHeart=true;
-    
-const r = photo.getBoundingClientRect();
-heartY = r.bottom + 90 - window.scrollY;
+
+    const r=final.getBoundingClientRect();
+    heartY=r.bottom + 120 - window.scrollY;
 
     for(let i=0;i<12;i++) setTimeout(meteor,i*200);
   }
