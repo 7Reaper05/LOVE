@@ -199,28 +199,65 @@ function drawStars(){
     ctx.fill();
   });
 }
-
+  
 function drawHeart(){
-  heartPulse+=0.04;
-  const p=1+Math.sin(heartPulse)*0.06;
-  const cx=canvas.width/2, cy=canvas.height/2-120, s=35*p;
-  const pts=[[-s,0],[-s/2,-s],[0,-s/2],[s/2,-s],[s,0],[s/2,s],[-s/2,s]];
+  heartPulse += 0.05;
 
-  ctx.strokeStyle="rgba(255,200,220,0.6)";
+  const pulse = 1 + Math.sin(heartPulse) * 0.12;
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2 - 200; // higher & centered
+  const s = 45 * pulse;
+
+  const points = [
+    [-s, 0],
+    [-s/2, -s],
+    [0, -s/2],
+    [s/2, -s],
+    [s, 0],
+    [s/2, s],
+    [-s/2, s]
+  ];
+
+  ctx.save();
+
+  /* 🌌 DIM AREA BEHIND HEART */
+  ctx.fillStyle = "rgba(0,0,0,0.25)";
   ctx.beginPath();
-  pts.forEach((pt,i)=>{
-    const x=cx+pt[0],y=cy+pt[1];
-    if(i===0)ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  ctx.arc(cx, cy, 140, 0, Math.PI * 2);
+  ctx.fill();
+
+  /* 💓 GLOWING STARS */
+  ctx.shadowColor = "rgba(255,160,210,1)";
+  ctx.shadowBlur = 35;
+
+  points.forEach(p => {
     ctx.beginPath();
-    ctx.arc(x,y,4*p,0,Math.PI*2);
-    ctx.fillStyle="#ffd6e7";
-    ctx.shadowBlur=16;
+    ctx.arc(cx + p[0], cy + p[1], 5 * pulse, 0, Math.PI * 2);
+    ctx.fillStyle = "#ffd6e7";
     ctx.fill();
   });
+
+  /* ✨ CONNECTING LINES */
+  ctx.beginPath();
+  points.forEach((p, i) => {
+    const x = cx + p[0];
+    const y = cy + p[1];
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.closePath();
+  ctx.strokeStyle = "rgba(255,190,230,0.9)";
+  ctx.lineWidth = 2;
   ctx.stroke();
-  ctx.font=`${26*p}px serif`;
-  ctx.textAlign="center";
-  ctx.fillText("L  ♡  A",cx,cy+10);
+
+  /* 💖 INITIALS */
+  ctx.font = `${32 * pulse}px Georgia`;
+  ctx.fillStyle = "white";
+  ctx.textAlign = "center";
+  ctx.shadowBlur = 25;
+  ctx.fillText("L  ♡  A", cx, cy + 14);
+
+  ctx.restore();
 }
 
 function meteor(){
